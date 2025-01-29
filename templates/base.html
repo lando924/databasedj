@@ -8,10 +8,15 @@
 <body>
     <h1 style="display: inline;">Feeback</h1>
     {% if session['user_username'] %}
+    <a href="/logout" style="display: inline; float: right; padding-top: 20px; padding-left: 30px;">Logout</a>
+    <a href="/users/{{session['user_username']}}" style="display: inline; float: right; padding-top: 20px;">{{session['user_username']}}</a>
+    {% else %}
+    <a href="/login" style="display: inline; float: right; padding-top: 20px; padding-left: 30px;">Login</a>
 
+    {% endif %}
 
     {% block content %} 
-    
+
     {% endblock %}
     
 </body>
