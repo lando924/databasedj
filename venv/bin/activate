@@ -38,7 +38,11 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
+<<<<<<< HEAD
 VIRTUAL_ENV="/Users/orlandocastaneda/Desktop/Springboard/IntermediateFlask/HashingLogin/Authentication-Authorization-Exercise/venv"
+=======
+VIRTUAL_ENV="/Users/orlandocastaneda/Desktop/Springboard/Assessment4-DatabaseDJ/databases/venv"
+>>>>>>> ad06634 (starter code)
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
