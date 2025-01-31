@@ -28,7 +28,6 @@ Using the `movies_db` database, write the correct SQL queries for each of these 
     SELECT * FROM movies WHERE rating = 'G';
 
     \```
-
 3.  The title and release year of every movie, ordered with the
     oldest movie first.
     \```sql
@@ -100,7 +99,6 @@ Using the `movies_db` database, write the correct SQL queries for each of these 
     GROUP BY s.id, s.first_name, s.last_name
     ORDER BY movie_count DESC;
 
-
     \```
 
 ### The rest of these are bonuses
@@ -144,11 +142,11 @@ Using the `movies_db` database, write the correct SQL queries for each of these 
     ORDER BY avg_runtime DESC
     LIMIT 5;
 
-
     \```
 
 14. The titles of all movies that don't feature any stars in our
     database.
+<<<<<<< HEAD
     \```sql
 
     SELECT m.title
@@ -170,6 +168,7 @@ Using the `movies_db` database, write the correct SQL queries for each of these 
 
 16. The first names, last names, and titles corresponding to every
     role in the database, along with every movie title that doesn't have a star, and the first and last names of every star not in a movie.
+
     \```sql
 
     SELECT s.first_name, s.last_name, m.title
