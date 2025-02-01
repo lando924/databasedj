@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-#!/Users/orlandocastaneda/Desktop/Springboard/IntermediateFlask/HashingLogin/Authentication-Authorization-Exercise/venv/bin/python3.11
-=======
 #!/Users/orlandocastaneda/Desktop/Springboard/Assessment4-DatabaseDJ/databases/venv/bin/python3.11
->>>>>>> ad06634 (starter code)
 # -*- coding: utf-8 -*-
 import re
 import sys

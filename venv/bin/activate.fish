@@ -33,11 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-<<<<<<< HEAD
-set -gx VIRTUAL_ENV "/Users/orlandocastaneda/Desktop/Springboard/IntermediateFlask/HashingLogin/Authentication-Authorization-Exercise/venv"
-=======
 set -gx VIRTUAL_ENV "/Users/orlandocastaneda/Desktop/Springboard/Assessment4-DatabaseDJ/databases/venv"
->>>>>>> ad06634 (starter code)
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH
