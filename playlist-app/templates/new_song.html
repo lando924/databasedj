@@ -1,7 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
+  <h2>Add a New Song</h2>
+  
+  <form method="POST">
+    {{ form.hidden_tag() }}
+    
+    <p>
+      {{ form.title.label }} <br>
+      {{ form.title() }}
+    </p>
 
-<h1>Add a form that when submitted creates a new song!</h1>
+    <p>
+      {{ form.artist.label }} <br>
+      {{ form.artist() }}
+    </p>
 
+    <button type="submit">Add Song</button>
+  </form>
 {% endblock %}

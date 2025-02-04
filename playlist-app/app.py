@@ -128,8 +128,8 @@ def add_song_to_playlist(playlist_id):
 
     # Restrict form to songs not already on this playlist
 
-    curr_on_playlist = [s.id for s in playlist.songs]
-    songs = Song.query.filter(Song.id.notin_(curr_on_playlist)).all()
+    curr_on_playlist = {s.id for s in playlist.songs}
+    songs = Song.query.filter(Song.id.in_(curr_on_playlist)).all()
     form.song.choices = [(s.id, f"{s.title} - {s.artist}") for s in songs]
 
     if form.validate_on_submit():
