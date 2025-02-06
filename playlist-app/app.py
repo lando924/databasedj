@@ -20,7 +20,7 @@ app.config['SECRET_KEY'] = "I'LL NEVER TELL!!"
 # Having the Debug Toolbar show redirects explicitly is often useful;
 # however, if you want to turn it off, you can uncomment this line:
 #
-# app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
+app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 
 debug = DebugToolbarExtension(app)
 
@@ -118,7 +118,7 @@ def add_song():
 @app.route("/playlists/<int:playlist_id>/add-song", methods=["GET", "POST"])
 def add_song_to_playlist(playlist_id):
     """Add a playlist and redirect to list."""
-
+    print(f"Route accessed for playlist {playlist_id}")
     # BONUS - ADD THE NECESSARY CODE HERE FOR THIS ROUTE TO WORK
 
     # THE SOLUTION TO THIS IS IN A HINT IN THE ASSESSMENT INSTRUCTIONS
@@ -128,13 +128,18 @@ def add_song_to_playlist(playlist_id):
 
     # Restrict form to songs not already on this playlist
 
-    curr_on_playlist = {s.id for s in playlist.songs}
-    songs = Song.query.filter(Song.id.in_(curr_on_playlist)).all()
+    curr_on_playlist = [s.id for s in playlist.songs]
+    songs = Song.query.filter(Song.id.notin_(curr_on_playlist)).all()
+
+    print("Available Songs for Playlist:", [(s.id, s.title) for s in songs])
+
     form.song.choices = [(s.id, f"{s.title} - {s.artist}") for s in songs]
 
     if form.validate_on_submit():
         song = Song.query.get(form.song.data)
         playlist.songs.append(song)
+
+        print(f"Added song {song.title} to playlist {playlist.name}")
 
         db.session.commit()
         return redirect(f"/playlists/{playlist_id}")
