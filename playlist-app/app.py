@@ -1,4 +1,4 @@
-from flask import Flask, redirect, render_template
+from flask import Flask, redirect, render_template, flash
 from flask_debugtoolbar import DebugToolbarExtension
 
 from models import db, connect_db, Playlist, Song
@@ -62,13 +62,18 @@ def add_playlist():
     form = PlaylistForm()
 
     if form.validate_on_submit():
-        new_playlist = Playlist(
-            name = form.name.data,
-            description=form.description.data
-        )
+        playlist_name = form.name.data.strip()
+        
+        if not playlist_name:
+            flash("Playlist name cannot be empty or just spaces!", "error")
+            return render_template("new_playlist.html", form=form)
+
+        new_playlist = Playlist(name=playlist_name, description=form.description.data.strip())
 
         db.session.add(new_playlist)
         db.session.commit()
+        flash("Playlist added successfully", "success")
+
 
         return redirect("/playlists")
     
@@ -104,12 +109,18 @@ def add_song():
     form = SongForm()
 
     if form.validate_on_submit():
-        new_song = Song(
-            title=form.title.data,
-            artist=form.artist.data
-        )
+        song_title = form.title.data.strip()
+        artist_name = form.artist.data.strip()
+
+        if not song_title:
+            flash("Song title cannot be empty or just spaces!", "error")
+            return render_template("new_song.html", form=form)
+
+        new_song = Song(title=song_title, artist=artist_name)
+
         db.session.add(new_song)
         db.session.commit()
+        flash("Song added successfully", "success")
 
         return redirect("/songs")
 

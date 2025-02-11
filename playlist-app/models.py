@@ -14,6 +14,12 @@ class Playlist(db.Model):
     name = db.Column(db.Text, nullable=False)
     description = db.Column(db.Text, nullable=False)
 
+
+    def __init__(self, name, description=""):
+        self.name = name.strip() # Trim spaces before saving
+        self.description = description.strip()
+
+
     songs = db.relationship('Song', secondary='playlists_songs', backref='playlists')
 
 class PlaylistSong(db.Model):
@@ -33,6 +39,10 @@ class Song(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.Text, nullable=False)
     artist = db.Column(db.Text, nullable=False)
+
+    def __init__(self, title, artist):
+        self.title = title.strip() # Trim spaces before saving
+        self.artist = artist.strip()
 
 # DO NOT MODIFY THIS FUNCTION
 def connect_db(app):
